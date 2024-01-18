@@ -24,10 +24,11 @@ void exit_with_system_msg(const char *msg)
 void print_client_info(const struct sockaddr_in *addr)
 { 
     char clnt_name[INET_ADDRSTRLEN];
+    in_port_t clnt_port = ntohs(addr->sin_port);
 
-    if (inet_ntop(AF_INET, &addr->sin_addr.s_addr, clnt_name, INET_ADDRSTRLEN) == NULL) {
+    if (clnt_port < 0 || inet_ntop(AF_INET, &addr->sin_addr.s_addr, clnt_name, INET_ADDRSTRLEN) == NULL) {
         printf("Unable to get client's address\n");
     } else {
-        printf("Handling client: %s/%d\n", clnt_name, ntohs(addr->sin_port));
+        printf("Handling client: %s/%d\n", clnt_name, clnt_port);
     }
 }

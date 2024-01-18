@@ -1,13 +1,13 @@
 #include "practical.h"
+#include <sys/_types/_ssize_t.h>
 #include <sys/socket.h>
 #include <sys/types.h>
 
 void echo(int clnt_sock)
 {
     char buf[BUF_SIZE];
-    ssize_t num_bytes_rcvd;
 
-    num_bytes_rcvd = recv(clnt_sock, buf, BUF_SIZE, 0);
+    ssize_t num_bytes_rcvd = recv(clnt_sock, buf, BUF_SIZE, 0);
     if (num_bytes_rcvd < 0) {
         exit_with_system_msg("recv() failed");
     }

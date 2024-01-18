@@ -46,7 +46,7 @@ int main(int argc, char *argv[])
         if (clnt_sock < 0) {
             exit_with_system_msg("accept() failed");
         }
-        
+        print_client_info(&clnt_addr);
         echo(clnt_sock);
         close(clnt_sock);
     }
