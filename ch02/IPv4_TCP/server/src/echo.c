@@ -1,7 +1,7 @@
-#include "practical.h"
 #include <sys/_types/_ssize_t.h>
 #include <sys/socket.h>
 #include <sys/types.h>
+#include "practical.h"
 
 void echo(int clnt_sock)
 {
@@ -17,7 +17,7 @@ void echo(int clnt_sock)
         if (num_bytes_sent < 0) {
             exit_with_system_msg("send() failed");
         } else if (num_bytes_sent != num_bytes_rcvd) {
-            exit_with_user_msg("send()", "unexpected number of bytes sent");
+            exit_with_user_msg("send()", "sent unexpected number of bytes");
         }
 
         num_bytes_rcvd = recv(clnt_sock, buf, BUF_SIZE, 0);

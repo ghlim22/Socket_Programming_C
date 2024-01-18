@@ -29,10 +29,12 @@ int main(int argc, char *argv[])
     serv_addr.sin_addr.s_addr = htonl(INADDR_ANY); /* Any local address */
     serv_addr.sin_port = htons(serv_port);
 
+    /* Bind the socket to the specific address and port */
     if (bind(serv_sock, (struct sockaddr *)&serv_addr, sizeof(serv_addr)) < 0) {
         exit_with_system_msg("bind() failed");
     }
 
+    /* Listening socket setup */
     if (listen(serv_sock, MAX_PENDING) < 0) {
         exit_with_system_msg("listen() failed");
     }
