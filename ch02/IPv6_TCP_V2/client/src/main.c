@@ -3,10 +3,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
-#include <sys/_endian.h>
-#include <sys/_types/_in_port_t.h>
-#include <sys/_types/_size_t.h>
-#include <sys/_types/_ssize_t.h>
 #include <sys/socket.h>
 #include <sys/types.h>
 #include <unistd.h>
@@ -40,11 +36,33 @@ int main(int argc, char *argv[])
 		exit_with_system_msg("inet_pton() failed");
 	}
 
+	/* ex02 - 8 */
+	struct sockaddr_in6 clnt_addr;
+	memset(&clnt_addr, 0, sizeof(clnt_addr));
+	clnt_addr.sin6_family = AF_INET6;
+	clnt_addr.sin6_port = htons(4200);
+	ret_val = inet_pton(AF_INET6, "fe80::6017:8fcd:629e:f423", &clnt_addr.sin6_addr);
+	if (ret_val == 0) {
+		exit_with_user_msg("inet_pton()", "invalid local address string");
+	} else if (ret_val < 0) {
+		exit_with_system_msg("inet_pton() failed");
+	}
+	if (bind(sock, (struct sockaddr *)&clnt_addr, sizeof(clnt_addr)) < 0) {
+		exit_with_system_msg("bind() failed");
+	}
+	
+	
+
+
 	/* 3. Set the server addresss structure */
 
 	if (connect(sock, (struct sockaddr *)&serv_addr, sizeof(serv_addr)) < 0) {
 		exit_with_system_msg("connect() failed");
 	}
+	get_remote_addr(sock);
+	get_local_addr(sock);
+
+	receive_greetings(sock);
 
 	size_t echo_strlen = strlen(echo_str);
 	ssize_t numbytes_sent = send(sock, echo_str, echo_strlen, 0);
