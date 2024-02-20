@@ -37,19 +37,19 @@ int main(int argc, char *argv[])
 	}
 
 	/* ex02 - 8 */
-	struct sockaddr_in6 clnt_addr;
-	memset(&clnt_addr, 0, sizeof(clnt_addr));
-	clnt_addr.sin6_family = AF_INET6;
-	clnt_addr.sin6_port = htons(4200);
-	ret_val = inet_pton(AF_INET6, "fe80::6017:8fcd:629e:f423", &clnt_addr.sin6_addr);
-	if (ret_val == 0) {
-		exit_with_user_msg("inet_pton()", "invalid local address string");
-	} else if (ret_val < 0) {
-		exit_with_system_msg("inet_pton() failed");
-	}
-	if (bind(sock, (struct sockaddr *)&clnt_addr, sizeof(clnt_addr)) < 0) {
-		exit_with_system_msg("bind() failed");
-	}
+	// struct sockaddr_in6 clnt_addr;
+	// memset(&clnt_addr, 0, sizeof(clnt_addr));
+	// clnt_addr.sin6_family = AF_INET6;
+	// clnt_addr.sin6_port = htons(4200);
+	// ret_val = inet_pton(AF_INET6, "fe80::6017:8fcd:629e:f423", &clnt_addr.sin6_addr);
+	// if (ret_val == 0) {
+	// 	exit_with_user_msg("inet_pton()", "invalid local address string");
+	// } else if (ret_val < 0) {
+	// 	exit_with_system_msg("inet_pton() failed");
+	// }
+	// if (bind(sock, (struct sockaddr *)&clnt_addr, sizeof(clnt_addr)) < 0) {
+	// 	exit_with_system_msg("bind() failed");
+	// }
 	
 	
 
