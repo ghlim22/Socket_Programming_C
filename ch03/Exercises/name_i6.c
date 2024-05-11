@@ -30,7 +30,7 @@ int main(int argc, char *argv[])
 
     int ecode =
         getnameinfo((struct sockaddr *)&addr, sizeof(addr), hostname_buf,
-                    sizeof(hostname_buf), service_buf, sizeof(service_buf), NI_NUMERICHOST);
+                    sizeof(hostname_buf), service_buf, sizeof(service_buf), 0);
 
 	if (ecode != 0) {
 		return 0;
