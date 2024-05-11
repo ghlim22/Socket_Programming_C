@@ -33,7 +33,7 @@ int main(int argc, char *argv[])
 	memset(&serv_addr, 0, sizeof(serv_addr)); /* Zero out the structure */
 	serv_addr.sin6_family = AF_INET6;
 	serv_addr.sin6_port = htons(serv_port);
-	int ret_val = inet_pton(AF_INET6, serv_addr_str, &serv_addr.sin6_addr);
+	int ret_val = inet_pton(AF_INET6, serv_addr_str, &serv_addr.sin6_addr.s6_addr);
 	if (ret_val == 0) {
 		exit_with_user_msg("inet_pton()", "invalid server address string");
 	} else if (ret_val < 0) {
