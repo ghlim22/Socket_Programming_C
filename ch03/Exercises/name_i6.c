@@ -13,7 +13,7 @@ int main(int argc, char *argv[])
 
     struct sockaddr_in6 addr;
     memset(&addr, 0, sizeof(addr));
-    addr.sin6_family = AF_INET;
+    addr.sin6_family = AF_INET6;
 	addr.sin6_port = htons(atoi(argv[2]));
     int ret = inet_pton(AF_INET6, argv[1], &addr.sin6_addr.s6_addr);
     if (ret <= 0) {
