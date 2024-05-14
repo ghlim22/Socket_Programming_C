@@ -136,6 +136,6 @@ int AcceptConnection(const int listeningSock)
         ExitWithSystemMsg("accept() failed");
     }
     fputs("handling: ", stdout);
-
+    PrintSocketAddress((struct sockaddr *)&clientInfo, stdout);
     fputc('\n', stdout);
 }

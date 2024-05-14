@@ -11,3 +11,4 @@ struct addrinfo *GetAddrList(const char *host, const char *service,
 
 int SetupClient(const char *host, const char *service);
 int SetupServer(const char *service);
+int AcceptConnection(const int listeningSock);
