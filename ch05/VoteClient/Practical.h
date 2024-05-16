@@ -1,5 +1,7 @@
 #pragma once
 
+#define BUF_SIZE (100)
+
 void ExitWithSystemMsg(const char *msg);
 void ExitWithUserMsg(const char *msg, const char *detail);
 
