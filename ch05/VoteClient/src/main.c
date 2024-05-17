@@ -1,4 +1,4 @@
-#include <cstdint>
+#include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
@@ -74,6 +74,8 @@ int main(int argc, char *argv[])
         if (vi.isResponse) {
             printf(" count = %llu\n", vi.count);
         }
+    } else {
+        fprintf(stderr, "Decode error");
     }
 
     fclose(str);

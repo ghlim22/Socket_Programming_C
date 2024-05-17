@@ -2,6 +2,7 @@
 #include "Practical.h"
 #include <stdint.h>
 #include <stdio.h>
+#include <sys/_types/_size_t.h>
 
 static const char DELIM = '\n';
 
@@ -15,7 +16,7 @@ static const char DELIM = '\n';
  */
 int GetNextMsg(FILE *in, uint8_t *buf, size_t bufSize)
 {
-    int cnt = 0;
+    size_t cnt = 0;
     int nextChar;
 
     do {
@@ -47,7 +48,7 @@ int GetNextMsg(FILE *in, uint8_t *buf, size_t bufSize)
  */
 int PutMsg(uint8_t buf[], size_t msgSize, FILE *out) 
 {
-    for (int i = 0; i < msgSize; ++i) {
+    for (size_t i = 0; i < msgSize; ++i) {
         if (buf[i] == DELIM) {
             return -1;
        }

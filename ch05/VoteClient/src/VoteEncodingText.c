@@ -24,6 +24,7 @@ enum {
  */
 bool Decode(uint8_t *inBuf, size_t mSize, VoteInfo *v)
 {
+    (void)mSize;
     char *tok = strtok((char *)inBuf, DELIM_STR);
     if (tok == NULL || strcmp(tok, MAGIC) != 0) {
         return false;
@@ -77,7 +78,7 @@ size_t Encode(VoteInfo *v, uint8_t *outBuf, size_t bufSize)
     uint8_t *bufPtr = outBuf;
     long size = bufSize;
     int rv = snprintf((char *)outBuf, size, "%s %c %s %d", MAGIC,
-                      (v->isInquiry ? "i" : "v"), (v->isResponse ? "R" : ""),
+                      (v->isInquiry ? 'i' : 'v'), (v->isResponse ? "R" : ""),
                       v->candidate);
     bufPtr += rv;
     size -= rv;

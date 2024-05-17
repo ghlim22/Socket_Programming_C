@@ -1,6 +1,7 @@
 #pragma once
 
-#include <cstdint>
+#include <stdbool.h>
+#include <stdint.h>
 
 typedef struct VoteInfo
 {

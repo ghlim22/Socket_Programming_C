@@ -138,4 +138,6 @@ int AcceptConnection(const int listeningSock)
     fputs("handling: ", stdout);
     PrintSocketAddress((struct sockaddr *)&clientInfo, stdout);
     fputc('\n', stdout);
+
+    return sock;
 }
